@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: linear-gradient(to right, #6a11cb 0%, #2575fc 50%, #00c6ff 100%);
+    background-size: 400% 400%;
+    animation: gradientAnimation 16s ease infinite;
+    font-family: Arial, sans-serif;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#todo {
+    display: grid;
+    
+}
+
+#placa {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+    color: #fff8e7;
+    margin-bottom: 20px;
+}
+
+#marcae{
+    font-size: 41px;
+    color: goldenrod;
+    font-weight: bold;
+}
+
+#marcae {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    animation: colorChange 12s infinite;
+    
+    
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes colorChange {
+    0% { color: #FF4500; } 
+    25% { color: #FFA500; }
+    50% { color: #FFD700; }
+    75% { color: #FF6347; }
+    100% { color: #FF4500; }
+}
+
+.form {
+    background-color: #fff8e7;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    display: inline-block;
+}
+
+#divform{
+    display: block;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #0072ff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #005bb5;
+}
+
+a {
+    color: #0072ff;
+    text-decoration: none;
+    display: block;
+    margin-top: 20px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#placa-error {
+    margin-top: 15px;
+    padding: 1px 1px;
+    background-color: rgb(240, 208, 240);
+    border-radius: 5px;
+}
+
+.error-message {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.logo {
+    font-family: "Arsenal SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    
+}
+
+
+#marcasin {
+    font-family: "Arsenal SC", sans-serif;
+    font-weight: 1500;
+    font-style: normal;
+}

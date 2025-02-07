@@ -1,0 +1,35 @@
+.fila {
+    width: 50%;
+    margin: auto;
+    padding-bottom: 15px;
+}
+
+label {
+    text-align: right;
+}
+
+#botones{
+    padding-top: 20px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+}
+.input-group .form-control {
+    flex: 1;
+    border-radius: 0;
+}
+.input-group-append {
+    display: flex;
+    align-items: center;
+}
+.input-group-text {
+    display: flex;
+    align-items: center;
+    border-radius: 0;
+    padding: 0 0.75rem;
+}
+.input-group-text i {
+    font-size: 1rem;
+}
