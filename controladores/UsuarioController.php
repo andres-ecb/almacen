@@ -61,12 +61,33 @@ class UsuarioController {
     }
 
     public function actualizar() {
+        session_start();
+        if (!isset($_SESSION['user_id'])) {
+            header('Location: ../login.php');
+            exit;
+        }
+    
         $id = $_POST['id'];
         $nombre_usuario = $_POST['nombre_usuario'];
         $nombre_real = $_POST['nombre_real'];
         $rol_id = $_POST['rol_id'];
-
-        $this->modelo->actualizarUsuario($id, $nombre_usuario, $nombre_real, $rol_id);
+        $password = $_POST['password'];
+        $confirm_password = $_POST['confirm_password'];
+    
+        if (!empty($password)) {
+            if ($password !== $confirm_password) {
+                $_SESSION['message'] = 'Las nuevas contraseñas no coinciden.';
+                $_SESSION['message_type'] = 'danger';
+                header('Location: ../controladores/UsuarioController.php');
+                exit();
+            }
+            $this->modelo->actualizarUsuario($id, $nombre_usuario, $nombre_real, $rol_id, $password);
+        } else {
+            $this->modelo->actualizarUsuario($id, $nombre_usuario, $nombre_real, $rol_id);
+        }
+    
+        $_SESSION['message'] = 'Usuario actualizado exitosamente.';
+        $_SESSION['message_type'] = 'success';
         header('Location: ../controladores/UsuarioController.php');
     }
 

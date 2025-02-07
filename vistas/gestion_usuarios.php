@@ -142,16 +142,25 @@ include '../menu.php';
                             <input type="text" class="form-control" id="editar_nombre_usuario" name="nombre_usuario" required>
                         </div>
                         <div class="mb-3">
-                            <label for="editar_nombre_real" class="form-label">Nombre Persona</label>
+                            <label for="editar_nombre_real" class="form-label">Nombre Real</label>
                             <input type="text" class="form-control" id="editar_nombre_real" name="nombre_real" required>
                         </div>
                         <div class="mb-3">
                             <label for="editar_rol_id" class="form-label">Rol</label>
-                            <select class="form-control" id="editar_rol_id" name="rol_id" required>
+                            <select class="form-select" id="editar_rol_id" name="rol_id" required>
                                 <?php foreach ($roles as $rol): ?>
                                     <option value="<?= $rol['id'] ?>"><?= htmlspecialchars($rol['nombre_rol']) ?></option>
                                 <?php endforeach; ?>
                             </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editar_password" class="form-label">Nueva Contraseña</label>
+                            <input type="password" class="form-control" id="editar_password" name="password">
+                            <small class="text-muted">Deja este campo en blanco si no deseas cambiar la contraseña.</small>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editar_confirm_password" class="form-label">Confirmar Nueva Contraseña</label>
+                            <input type="password" class="form-control" id="editar_confirm_password" name="confirm_password">
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -19,12 +19,6 @@ class Usuario {
         $stmt->execute([$hashed_password, $id]);
     }
 
-    /*public function obtenerUsuarios() {
-        $stmt = $this->pdo->prepare("SELECT * FROM usuarios");
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }*/
-
     public function obtenerUsuariosConRoles() {
         $query = "SELECT usuarios.id, usuarios.nombre_usuario, usuarios.nombre_real, usuarios.rol_id, roles.nombre_rol 
                   FROM usuarios 
@@ -53,9 +47,36 @@ class Usuario {
         return $stmt->fetch();
     }
 
-    public function actualizarUsuario($id, $nombre_usuario, $nombre_real, $rol_id) {
-        $stmt = $this->pdo->prepare("UPDATE usuarios SET nombre_usuario = ?, nombre_real = ?, rol_id = ? WHERE id = ?");
-        return $stmt->execute([$nombre_usuario, $nombre_real, $rol_id, $id]);
+    public function actualizarUsuario($id, $nombre_usuario, $nombre_real, $rol_id, $password = null) {
+        if ($password) {
+            $query = "UPDATE usuarios 
+                      SET nombre_usuario = :nombre_usuario, 
+                          nombre_real = :nombre_real, 
+                          rol_id = :rol_id, 
+                          password = :password 
+                      WHERE id = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute([
+                ':nombre_usuario' => $nombre_usuario,
+                ':nombre_real' => $nombre_real,
+                ':rol_id' => $rol_id,
+                ':password' => password_hash($password, PASSWORD_BCRYPT),
+                ':id' => $id
+            ]);
+        } else {
+            $query = "UPDATE usuarios 
+                      SET nombre_usuario = :nombre_usuario, 
+                          nombre_real = :nombre_real, 
+                          rol_id = :rol_id 
+                      WHERE id = :id";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute([
+                ':nombre_usuario' => $nombre_usuario,
+                ':nombre_real' => $nombre_real,
+                ':rol_id' => $rol_id,
+                ':id' => $id
+            ]);
+        }
     }
 
     public function eliminarUsuario($id) {
